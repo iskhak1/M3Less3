@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="400.0" prefWidth="705.0" spacing="5" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.geekbrains.chat.Controller">
+   <Text fx:id="textNameProject" fill="#2d0707" strokeType="OUTSIDE" strokeWidth="0.0" text="ChatServer" textAlignment="CENTER" visible="false" wrappingWidth="678.8033479452133" VBox.vgrow="ALWAYS">
+      <font>
+         <Font name="Lucida Sans Unicode" size="18.0" />
+      </font>
+   </Text>
+    <HBox fx:id="loginBox" prefHeight="32.0" prefWidth="679.0" spacing="5" VBox.vgrow="ALWAYS">
+        <TextField fx:id="loginField" prefHeight="32.0" prefWidth="215.0" promptText="Login">
+         <font>
+            <Font name="Calibri Italic" size="15.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <DropShadow blurType="TWO_PASS_BOX">
+                     <color>
+                        <Color red="0.2257159948348999" green="0.19499999284744263" blue="0.7799999713897705" />
+                     </color>
+                  </DropShadow>
+               </bumpInput>
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color red="0.8509804010391235" green="0.1568627506494522" blue="0.6078431606292725" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect></TextField>
+        <PasswordField fx:id="passwordField" prefHeight="32.0" prefWidth="215.0" promptText="Password">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color red="0.8509804010391235" green="0.1568627506494522" blue="0.6078431606292725" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect></PasswordField>
+        <Button defaultButton="true" onAction="#btnAuthClick" prefHeight="32.0" prefWidth="94.0" text="Auth">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+    </HBox>
+    <HBox fx:id="messageBox" spacing="5" visible="false">
+        <VBox spacing="5">
+            <TextArea fx:id="textArea" editable="false" VBox.vgrow="ALWAYS">
+            <font>
+               <Font name="Microsoft YaHei Light" size="12.0" />
+            </font>
+            <effect>
+               <Lighting>
+                  <bumpInput>
+                     <Shadow />
+                  </bumpInput>
+                  <light>
+                     <Light.Distant>
+                        <color>
+                           <Color red="0.8509804010391235" green="0.1568627506494522" blue="0.6078431606292725" />
+                        </color>
+                     </Light.Distant>
+                  </light>
+               </Lighting>
+            </effect></TextArea>
+            <HBox spacing="5">
+                <TextField fx:id="textField" promptText="Write your message here" HBox.hgrow="ALWAYS">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant>
+                           <color>
+                              <Color red="0.8509804010391235" green="0.1568627506494522" blue="0.6078431606292725" />
+                           </color>
+                        </Light.Distant>
+                     </light>
+                  </Lighting>
+               </effect></TextField>
+                <Button defaultButton="true" onAction="#btnSendClick" text="Send" />
+            </HBox>
+        </VBox>
+        <ListView fx:id="clientList" maxWidth="200" minWidth="200" onMouseClicked="#selectClient">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color red="0.8509804010391235" green="0.1568627506494522" blue="0.6078431606292725" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect></ListView>
+    </HBox>
+   <effect>
+      <ColorAdjust brightness="-0.2" contrast="-0.08" hue="-0.7" saturation="0.59" />
+   </effect>
+</VBox>

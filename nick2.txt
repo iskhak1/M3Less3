@@ -1,0 +1,14 @@
+/clients nick2 nick1 nick0 
+Пользователь nick3 зашел в чат
+/clients nick2 nick1 nick0 nick3 
+Пользователь nick4 зашел в чат
+/clients nick2 nick1 nick0 nick4 nick3 
+nick1: hey. what are you douing?
+nick2: I am busy
+nick2: i do my home work
+от nick0: good! great!
+nick0: who can help me with my homework?
+/clients nick2 
+nick2: hey where are you?
+/clients nick2 
+nick2: dfdasf
