@@ -50,11 +50,6 @@ public class ChatClient {
 
                     while (true) {
                          String message = in.readUTF();
-                        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nick + ".txt", true))) {
-                          writer.write(message+"\n");
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
                         if (message.startsWith("/")) {
                             if ("/end".equals(message)) {
                                 controller.setAuth(false);
