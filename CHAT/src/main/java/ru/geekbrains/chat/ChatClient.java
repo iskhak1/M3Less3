@@ -19,7 +19,7 @@ public class ChatClient {
     private final Controller controller;
 
     private boolean timeToClose = true;
-
+     String block;
 
     public ChatClient(Controller controller) {
         this.controller = controller;
@@ -35,7 +35,7 @@ public class ChatClient {
                 try{
                     final String nick;
                     while (true) {
-                        //block();
+                        block();
                         final String msgAuth = in.readUTF();
                         if (msgAuth.startsWith("/authok")) {
                             final String[] split = msgAuth.split(" ");
@@ -119,6 +119,7 @@ public class ChatClient {
             public void run() {
                 if(timeToClose==true) {
                     System.out.println("you Late, сработал метод ,block /=)");
+                    block = "you Late, сработал метод ,block /=)";
                     closeConnection();
                     timer.cancel();
                     timer.purge();
