@@ -19,7 +19,7 @@ public class ChatClient {
     private final Controller controller;
 
     private boolean timeToClose = true;
-
+     String block;
 
     public ChatClient(Controller controller) {
         this.controller = controller;
@@ -35,14 +35,22 @@ public class ChatClient {
                 try{
                     final String nick;
                     while (true) {
-                        //block();
+                        block();
                         final String msgAuth = in.readUTF();
                         if (msgAuth.startsWith("/authok")) {
                             final String[] split = msgAuth.split(" ");
                              nick = split[1];
-                            controller.addMessage("Успешная авторизация под ником " + nick);
+                             controller.addMessage("Успешная авторизация под ником " + nick);
 
                             controller.setAuth(true);
+                            try (BufferedReader reader = new BufferedReader(new FileReader(nick + ".txt"))) {
+                                String str;
+                                while ((str = reader.readLine()) != null) {
+                                    controller.addMessage(str);
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             timeToClose = false;
                             break;
                         }
@@ -51,7 +59,7 @@ public class ChatClient {
                     while (true) {
                          String message = in.readUTF();
                         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nick + ".txt", true))) {
-                          writer.write(message+"\n");
+                            writer.write(message+"\n");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -111,6 +119,7 @@ public class ChatClient {
             public void run() {
                 if(timeToClose==true) {
                     System.out.println("you Late, сработал метод ,block /=)");
+                    block = "you Late, сработал метод ,block /=)";
                     closeConnection();
                     timer.cancel();
                     timer.purge();

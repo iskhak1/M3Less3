@@ -13,3 +13,6 @@ nick0: who can help me with my homework?
 nick1: hi
 участнику nick3: how are you&
 Участника с ником nick4 нет в чате
+/clients nick1 
+nick1: dfadsfg
+nick1: I Do it
